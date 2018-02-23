@@ -1,6 +1,13 @@
 from django.db import models
 
 
+"""
+Поля id в моделях django добавляются автоматически
+Поля name можно было бы использовать в качестве первичного ключа и избежать лишнего кода в сериализации,
+ведь в теории одниковых категорий или типов не будет.
+"""
+
+
 class ProductType(models.Model):
     name = models.CharField(max_length=100)
 
@@ -8,6 +15,7 @@ class ProductType(models.Model):
         return '%s' % self.name
 
     class Meta:
+        # Для удобства использование админки джанго
         verbose_name = 'Тип продукта'
         verbose_name_plural = 'Типы продуктов'
 
