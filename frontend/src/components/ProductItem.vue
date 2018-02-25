@@ -8,7 +8,7 @@
     <div class="img"><img :src="product.image_url"></div>
     <div class="options">
       <button type="button" class="btn btn-success">Edit</button>
-      <button type="button" class="btn btn-success">Delete</button>
+      <button type="button" class="btn btn-success" @click="deleteProduct(product)">Delete</button>
     </div>
 
     <div class="description">
@@ -20,10 +20,18 @@
 </template>
 
 <script>
-    export default {
-        name: "product-item",
-        props: ['product']
-    }
+
+  export default {
+      name: "product-item",
+      props: ['product'],
+      methods: {
+        deleteProduct (product) {
+          // Вызываем действие `deleteNote` из нашего хранилища, которое
+          // попытается удалить заметку из нашех базы данных, отправив запрос к API
+          this.$store.dispatch('deleteProduct', product)
+        }
+      }
+  }
 </script>
 
 <style scoped>
@@ -39,6 +47,10 @@
     background-color: white;
     justify-items: stretch;
     grid-row-gap: 15px;
+  }
+
+  .item:hover {
+    box-shadow:0 0 13px 0 rgba(0,0,0,.4)
   }
 
   img {

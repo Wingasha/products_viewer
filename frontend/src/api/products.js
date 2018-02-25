@@ -6,7 +6,7 @@ export const Product = {
   //     return response.data
   //   })
   // },
-  delete (produtc) {
+  delete (product) {
     return HTTP.delete(`/products/${product.id}/`)
   },
   list () {
