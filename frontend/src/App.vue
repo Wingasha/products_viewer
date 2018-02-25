@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <product-list/>
   </div>
 </template>
 
 <script>
+import ProductList from './components/ProductList'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'product-list': ProductList
+  }
 }
 </script>
 
@@ -16,8 +20,12 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #edeef0;
+
 }
 </style>
