@@ -5,15 +5,15 @@
         <h2>{{ product.name }}</h2>
       </strong>
       </div>
-    <div class="img"><img :src="product.image_url"></div>
+    <div class="img"><img :src="product.image"></div>
     <div class="options">
       <button type="button" class="btn btn-success">Edit</button>
-      <button type="button" class="btn btn-success" @click="deleteProduct(product)">Delete</button>
+      <button type="button" class="btn btn-danger" @click="deleteProduct(product)">Delete</button>
     </div>
 
     <div class="description">
-      <strong>Category:</strong> {{ product.category.name }} <br/>
-      <strong>Type:</strong> {{ product.product_type.name }}<br/>
+      <strong>Category:</strong> {{ product.category}} <br/>
+      <strong>Type:</strong> {{ product.product_type }}<br/>
       <strong>Description:</strong> {{ product.description }}
     </div>
   </div>
@@ -26,8 +26,8 @@
       props: ['product'],
       methods: {
         deleteProduct (product) {
-          // Вызываем действие `deleteNote` из нашего хранилища, которое
-          // попытается удалить заметку из нашех базы данных, отправив запрос к API
+          // Вызываем действие `deleteProduct` из нашего хранилища, которое
+          // попытается удалить продукт из нашей базы данных, отправив запрос к API
           this.$store.dispatch('deleteProduct', product)
         }
       }
@@ -58,11 +58,11 @@
     min-height: 150px;
     max-width: 500px;
     max-height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
   }
 
-  .img {
-     justify-self: center;
-  }
 
   .description {
     text-align: justify;

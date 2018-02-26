@@ -34,17 +34,17 @@ const mutations = {
   },
   // Задаем список продуктов
   [SET_PRODUCTS] (state, { products }) {
-    state.products = products
+    state.products = products.reverse()
   }
 }
 
 // Действия
 const actions = {
-  // createProduct ({ commit }, productData) {
-  //   Product.create(productData).then(product => {
-  //     commit(ADD_PRODUCT, product)
-  //   })
-  // },
+  createProduct ({ commit }, productData) {
+    Product.create(productData).then(product => {
+      commit(ADD_PRODUCT, product)
+    })
+  },
   deleteProduct ({ commit }, product) {
     Product.delete(product).then(response => {
       commit(REMOVE_PRODUCT, product)

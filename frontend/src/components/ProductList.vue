@@ -32,6 +32,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     list-style-type: none;
+    padding: 0;
   }
 
 </style>

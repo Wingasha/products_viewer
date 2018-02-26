@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <product-list/>
+    <panel></panel>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import ProductList from './components/ProductList'
+import Panel from './components/Panel'
 
 export default {
   name: 'App',
   components: {
-    'product-list': ProductList
+    'product-list': ProductList,
+    'panel': Panel
   }
 }
 </script>
