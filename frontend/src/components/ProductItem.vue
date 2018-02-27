@@ -12,7 +12,7 @@
     </div>
 
     <div class="description">
-      <strong>Category:</strong> {{ product.category}} <br/>
+      <strong>Category:</strong> {{  categoryName }} <br/>
       <strong>Type:</strong> {{ product.product_type }}<br/>
       <strong>Description:</strong> {{ product.description }}
     </div>
@@ -20,18 +20,34 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
-  export default {
-      name: "product-item",
-      props: ['product'],
-      methods: {
-        deleteProduct (product) {
-          // Вызываем действие `deleteProduct` из нашего хранилища, которое
-          // попытается удалить продукт из нашей базы данных, отправив запрос к API
-          this.$store.dispatch('deleteProduct', product)
-        }
+export default {
+  name: "product-item",
+  props: ['product'],
+  computed: {
+    ...mapGetters(['categories']),
+    categoryName () {
+      try {
+        /*
+        Проблема: посколько данныые подгружаются асинхронно, то компонент рендерится раньше, чем данные подгружаются.
+        Поэтому this.categories === undefined и выпадает ошибка при вызове find. Как правильно решить - не знаю. Так что
+        просто обернул в try-catch.
+        */
+        return [...this.categories].find(x => x.id === this.product.category).name
+      } catch(err){
+        console.log(err)
       }
+    }
+  },
+  methods: {
+    deleteProduct (product) {
+      // Вызываем действие `deleteProduct` из нашего хранилища, которое
+      // попытается удалить продукт из нашей базы данных, отправив запрос к API
+      this.$store.dispatch('deleteProduct', product)
+    }
   }
+}
 </script>
 
 <style scoped>

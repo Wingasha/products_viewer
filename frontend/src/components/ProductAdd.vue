@@ -6,8 +6,11 @@
       <input type="text" class="form-control" id="name" v-model="name">
     </div>
     <div class="form-group">
-      <label for="category">Category</label>
-      <input type="text" class="form-control" id="category" v-model="category">
+      <label for="categorySelect">Category</label>
+      <select class="form-control" v-model="category" id="categorySelect">
+        <option v-bind:key="category.id" v-for="category in categories" v-bind:value="category.id">{{ category.name }}</option>
+      </select>
+      <!--<input type="text" class="form-control" id="category" v-model="category" hidden>-->
     </div>
     <div class="form-group">
       <label for="type">Type</label>
@@ -32,8 +35,17 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     name: "product-add",
+    computed: {
+      ...mapGetters(['categories']),
+    },
+    beforeMount () {
+      this.$store.dispatch('getCategories')
+      console.log(this.categories)
+    },
     data () {
       return {
         'name': '',

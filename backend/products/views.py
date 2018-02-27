@@ -1,10 +1,7 @@
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-
 from rest_framework import viewsets
 
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, Category, ProductType
+from .serializers import ProductSerializer, ProductTypeSerializer, CategorySerializer
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -12,3 +9,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
 
 
+class ProductTypeViewSet(viewsets.ModelViewSet):
+    queryset = ProductType.objects.all()
+    serializer_class = ProductTypeSerializer
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

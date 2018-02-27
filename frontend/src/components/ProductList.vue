@@ -21,6 +21,8 @@ export default {
     // имеющихся продуктов. Для этого мы вызываем действие `getProducts` из
     // нашего хранилища
     this.$store.dispatch('getProducts')
+    this.$store.dispatch('getCategories')
+
   }
 }
 </script>
