@@ -13,8 +13,10 @@
       <!--<input type="text" class="form-control" id="category" v-model="category" hidden>-->
     </div>
     <div class="form-group">
-      <label for="type">Type</label>
-      <input type="text" class="form-control" id="type" v-model="product_type">
+      <label for="typeSelect">Category</label>
+      <select class="form-control" v-model="product_type" id="typeSelect">
+        <option v-bind:key="type.id" v-for="type in productTypes" v-bind:value="type.id">{{ type.name }}</option>
+      </select>
     </div>
     <div class="form-group">
       <img :src="image"/>
@@ -40,11 +42,11 @@
   export default {
     name: "product-add",
     computed: {
-      ...mapGetters(['categories']),
+      ...mapGetters(['categories', 'productTypes']),
     },
     beforeMount () {
       this.$store.dispatch('getCategories')
-      console.log(this.categories)
+      this.$store.dispatch('getProductTypes')
     },
     data () {
       return {
@@ -58,7 +60,6 @@
     methods: {
       submitForm (event) {
         this.createProduct()
-
         // preventDefault нужно для того, чтобы страница
         // не перезагружалась после нажатия кнопки submit
         event.preventDefault()

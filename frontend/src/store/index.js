@@ -8,7 +8,8 @@ import {
   ADD_PRODUCT,
   REMOVE_PRODUCT,
   SET_PRODUCTS,
-  SET_CATEGORIES
+  SET_CATEGORIES,
+  SET_PRODUCT_TYPES
 } from './mutation-types.js'
 
 Vue.use(Vuex)
@@ -16,13 +17,15 @@ Vue.use(Vuex)
 // Состояние
 const state = {
   products: [], // список заметок
-  categories: []
+  categories: [],
+  productTypes: []
 }
 
 // Геттеры
 const getters = {
   products: state => state.products,
-  categories: state => state.categories
+  categories: state => state.categories,
+  productTypes: state => state.productTypes
 }
 
 // Мутации
@@ -44,6 +47,9 @@ const mutations = {
   [SET_CATEGORIES] (state, { categories }) {
     state.categories = categories
   },
+  [SET_PRODUCT_TYPES] (state, { productTypes }) {
+    state.productTypes = productTypes
+  }
 }
 
 // Действия
@@ -67,7 +73,13 @@ const actions = {
     Category.list().then(categories => {
       commit(SET_CATEGORIES, { categories })
     })
-  }
+  },
+  getProductTypes ({ commit }) {
+    ProductType.list().then(productTypes => {
+      commit(SET_PRODUCT_TYPES, { productTypes })
+    })
+  },
+
 }
 
 export default new Vuex.Store({

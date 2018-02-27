@@ -13,7 +13,7 @@
 
     <div class="description">
       <strong>Category:</strong> {{  categoryName }} <br/>
-      <strong>Type:</strong> {{ product.product_type }}<br/>
+      <strong>Type:</strong> {{ productTypeName }}<br/>
       <strong>Description:</strong> {{ product.description }}
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
   name: "product-item",
   props: ['product'],
   computed: {
-    ...mapGetters(['categories']),
+    ...mapGetters(['categories', 'productTypes']),
     categoryName () {
       try {
         /*
@@ -35,6 +35,13 @@ export default {
         просто обернул в try-catch.
         */
         return [...this.categories].find(x => x.id === this.product.category).name
+      } catch(err){
+        console.log(err)
+      }
+    },
+    productTypeName () {
+      try {
+        return [...this.productTypes].find(x => x.id === this.product.product_type).name
       } catch(err){
         console.log(err)
       }

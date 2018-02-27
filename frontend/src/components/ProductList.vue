@@ -22,7 +22,7 @@ export default {
     // нашего хранилища
     this.$store.dispatch('getProducts')
     this.$store.dispatch('getCategories')
-
+    this.$store.dispatch('getProductTypes')
   }
 }
 </script>
