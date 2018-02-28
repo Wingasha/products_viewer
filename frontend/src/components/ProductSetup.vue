@@ -13,7 +13,7 @@
       <!--<input type="text" class="form-control" id="category" v-model="category" hidden>-->
     </div>
     <div class="form-group">
-      <label for="typeSelect">Category</label>
+      <label for="typeSelect">Type</label>
       <select class="form-control" v-model="product_type" id="typeSelect">
         <option v-bind:key="type.id" v-for="type in productTypes" v-bind:value="type.id">{{ type.name }}</option>
       </select>

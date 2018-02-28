@@ -1,5 +1,9 @@
 <template>
   <ul class="list">
+    <div class="alert alert-success" role="alert">
+        <h2>Result of search</h2>
+    </div>
+
     <li v-bind:key="product.id" v-for="product in searchResult">
       <product-item :product="product"></product-item>
     </li>
@@ -15,8 +19,26 @@
     computed: {
       ...mapGetters(['products']),
       searchResult () {
+        console.log("TYPE ", this.$route.query.type)
+        console.log("CATEGORY ",this.$route.query.category)
         let productName = this.$route.query.name
-        return [...this.products].filter(x => x.name.toLowerCase().includes(productName.toLowerCase()))
+        let type = parseInt(this.$route.query.type)
+        let category = parseInt(this.$route.query.category)
+        // let type = [...this.productTypes].find(x => x.id === this.$route.query.type).name
+        // let category =  [...this.categories].find(x => x.id === this.$route.query.category).name
+        let result = [...this.products].filter(x => x.name.toLowerCase().includes(productName.toLowerCase()))
+        console.log(result)
+        let test = result.map(x => console.log("Jbkect in res", x ))
+        console.log(result[0].name, result[0].product_type)
+        console.log("TYPE ", type)
+        console.log("CATEGORY ", category)
+        if (type)
+          result = result.filter(x => x.product_type === type)
+        console.log(result)
+        if (category)
+          result = result.filter(x => x.category === category)
+        console.log(result)
+        return result
       }
     },
     components: {

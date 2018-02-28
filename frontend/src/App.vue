@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <custom-menu></custom-menu>
     <panel></panel>
     <router-view/>
   </div>
@@ -8,12 +9,14 @@
 <script>
 import ProductList from './components/ProductList'
 import Panel from './components/Panel'
+import Menu from './components/Menu'
 
 export default {
   name: 'App',
   components: {
     'product-list': ProductList,
-    'panel': Panel
+    'panel': Panel,
+    'custom-menu': Menu
   }
 }
 </script>
@@ -24,11 +27,16 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
   width: 800px;
   margin-left: auto;
   margin-right: auto;
   background-color: #edeef0;
+  display: grid;
+  width: 800px;
+  grid-template-rows: auto auto auto;
+  grid-row-gap: 15px;
+  justify-items: center;
 
 }
 </style>
