@@ -1,18 +1,24 @@
 <template>
   <ul class="list">
-  <li v-bind:key="product.id" v-for="product in products">
-    <product-item :product="product"></product-item>
-  </li>
- </ul>
- </template>
+    <li v-bind:key="product.id" v-for="product in searchResult">
+      <product-item :product="product"></product-item>
+    </li>
+  </ul>
+</template>
 
 <script>
   import { mapGetters } from 'vuex'
   import ProductItem from './ProductItem'
 
   export default {
-    name: 'product-list',
-    computed: mapGetters(['products']),
+    name: "search-result",
+    computed: {
+      ...mapGetters(['products']),
+      searchResult () {
+        let productName = this.$route.query.name
+        return [...this.products].filter(x => x.name.toLowerCase().includes(productName.toLowerCase()))
+      }
+    },
     components: {
       'product-item': ProductItem
     },
@@ -29,12 +35,11 @@
       // После возвращения с компонента добавления/редактирования подняться в верх списка
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
+    },
   }
 </script>
 
-
-<style>
+<style scoped>
   .list {
     width: 600px;
     margin-left: auto;
@@ -42,5 +47,4 @@
     list-style-type: none;
     padding: 0;
   }
-
 </style>

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ProductSetup from '@/components/ProductSetup'
 import ProductList from '@/components/ProductList'
+import SearchResult from '@/components/SearchResult'
+import PageNotFound from '@/components/PageNotFound'
 
 Vue.use(Router)
 
@@ -9,6 +11,7 @@ Vue.use(Router)
 // ProductList - компонент для отображения списка продуктов
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -20,10 +23,21 @@ export default new Router({
       name: 'ProductAdd',
       component: ProductSetup
     },
-    { path: '/edit/:id',
+    {
+      path: '/edit/:id',
       name: 'ProductEdit',
       component: ProductSetup,
       props: true
     },
+    {
+      path: '/search',
+      name: 'ProductSearch',
+      component: SearchResult,
+      props: true
+    },
+    {
+      path: "*",
+      component: PageNotFound
+    }
   ]
 })

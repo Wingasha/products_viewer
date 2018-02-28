@@ -1,7 +1,9 @@
 <template>
   <div class="panel">
-    <input class="form-control" placeholder="Search"/>
-    <button class="btn btn-primary">Search</button>
+    <input class="form-control" placeholder="Product name..." v-model="productName"/>
+    <router-link :to="{ path: 'search', query: { name: productName }}">
+      <button class="btn btn-primary">Search</button>
+    </router-link>
     <router-link to="add">
       <button class="btn btn-primary">Add product</button>
     </router-link>
@@ -10,7 +12,12 @@
 
 <script>
   export default {
-    name: "panel"
+    name: "panel",
+    data () {
+      return {
+        'productName': ''
+      }
+    }
   }
 </script>
 
@@ -24,7 +31,12 @@
     margin-right: auto;
 
     display: grid;
-    grid-template-columns: 50% auto auto;
+    grid-template-columns: 55% auto auto;
     grid-column-gap: 15px;
+
+    justify-content: center;
+  }
+  button {
+    min-width: 100px;
   }
 </style>
