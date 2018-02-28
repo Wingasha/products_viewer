@@ -7,7 +7,9 @@
       </div>
     <div class="img"><img :src="product.image"></div>
     <div class="options">
-      <button type="button" class="btn btn-success">Edit</button>
+      <router-link :to="{path: `edit/${product.id}`}" :prop="product">
+        <button type="button" class="btn btn-success">Edit</button>
+      </router-link>
       <button type="button" class="btn btn-danger" @click="deleteProduct(product)">Delete</button>
     </div>
 
@@ -20,41 +22,39 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+  import { mapGetters } from 'vuex'
 
-export default {
-  name: "product-item",
-  props: ['product'],
-  computed: {
-    ...mapGetters(['categories', 'productTypes']),
-    categoryName () {
-      try {
-        /*
-        Проблема: посколько данныые подгружаются асинхронно, то компонент рендерится раньше, чем данные подгружаются.
-        Поэтому this.categories === undefined и выпадает ошибка при вызове find. Как правильно решить - не знаю. Так что
-        просто обернул в try-catch.
-        */
-        return [...this.categories].find(x => x.id === this.product.category).name
-      } catch(err){
-        console.log(err)
+  export default {
+    name: "product-item",
+    props: ['product'],
+    computed: {
+      ...mapGetters(['categories', 'productTypes']),
+      categoryName () {
+        try {
+          // Проблема: посколько данныые подгружаются асинхронно, то компонент рендерится раньше, чем данные подгружаются.
+          // Поэтому this.categories === undefined и выпадает ошибка при вызове find. Как правильно решить - не знаю.
+          // Так что просто обернул в try-catch.
+          return [...this.categories].find(x => x.id === this.product.category).name
+        } catch(err){
+          console.log(err)
+        }
+      },
+      productTypeName () {
+        try {
+          return [...this.productTypes].find(x => x.id === this.product.product_type).name
+        } catch(err){
+          console.log(err)
+        }
       }
     },
-    productTypeName () {
-      try {
-        return [...this.productTypes].find(x => x.id === this.product.product_type).name
-      } catch(err){
-        console.log(err)
+    methods: {
+      deleteProduct (product) {
+        // Вызывает действие `deleteProduct` из хранилища, которое
+        // попытается удалить продукт из  базы данных, отправив запрос к API
+        this.$store.dispatch('deleteProduct', product)
       }
     }
-  },
-  methods: {
-    deleteProduct (product) {
-      // Вызываем действие `deleteProduct` из нашего хранилища, которое
-      // попытается удалить продукт из нашей базы данных, отправив запрос к API
-      this.$store.dispatch('deleteProduct', product)
-    }
   }
-}
 </script>
 
 <style scoped>

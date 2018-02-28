@@ -22,7 +22,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    image = Base64ImageField()
+    image = Base64ImageField(required=False)
     # product_type = ProductTypeSerializer() serializers.SerializerMethodField()
     # category = CategorySerializer()
 

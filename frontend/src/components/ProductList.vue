@@ -7,24 +7,29 @@
  </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import ProductItem from './ProductItem'
+  import { mapGetters } from 'vuex'
+  import ProductItem from './ProductItem'
 
-export default {
-  name: 'product-list',
-  computed: mapGetters(['products']),
-  components: {
-    'product-item': ProductItem
-  },
-  beforeMount () {
-    // Перед тем как загрузить страницу, нам нужно получить список всех
-    // имеющихся продуктов. Для этого мы вызываем действие `getProducts` из
-    // нашего хранилища
-    this.$store.dispatch('getProducts')
-    this.$store.dispatch('getCategories')
-    this.$store.dispatch('getProductTypes')
+  export default {
+    name: 'product-list',
+    computed: mapGetters(['products']),
+    components: {
+      'product-item': ProductItem
+    },
+    beforeMount () {
+      // Перед тем как загрузить страницу, нужно получить список всех
+      // имеющихся продуктов, категорий и типов. Для этого вызываются действия из хранилища
+      console.log('beforeMount')
+      this.$store.dispatch('getProducts')
+      this.$store.dispatch('getCategories')
+      this.$store.dispatch('getProductTypes')
+      console.log('afterMount')
+
+      // После возвращения с компонента добавления/редактирования подняться в верх списка
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
   }
-}
 </script>
 
 

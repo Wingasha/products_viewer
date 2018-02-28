@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ProductAdd from '@/components/ProductAdd'
+import ProductSetup from '@/components/ProductSetup'
 import ProductList from '@/components/ProductList'
 
 Vue.use(Router)
+
+// ProductSetup - компонент для добавления/редактирования продукта
+// ProductList - компонент для отображения списка продуктов
 
 export default new Router({
   routes: [
@@ -15,7 +18,12 @@ export default new Router({
     {
       path: '/add',
       name: 'ProductAdd',
-      component: ProductAdd
-    }
+      component: ProductSetup
+    },
+    { path: '/edit/:id',
+      name: 'ProductEdit',
+      component: ProductSetup,
+      props: true
+    },
   ]
 })

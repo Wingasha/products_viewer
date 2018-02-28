@@ -1,3 +1,8 @@
+/*
+Реализация хранилища с помощью Vuex
+ */
+
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { Product } from '../api/products'
@@ -44,19 +49,22 @@ const mutations = {
   [SET_PRODUCTS] (state, { products }) {
     state.products = products.reverse()
   },
+  // Задаем список категорий
   [SET_CATEGORIES] (state, { categories }) {
     state.categories = categories
   },
+  // Задаем список типов
   [SET_PRODUCT_TYPES] (state, { productTypes }) {
     state.productTypes = productTypes
   }
 }
 
-// Действия
+// Действия. Вызывают функции, выполняющие ajаx запросы, а после обновляют состояние списков
 const actions = {
-  createProduct ({ commit }, productData) {
+  createProduct ({ commit }, { productData, router }) {
     Product.create(productData).then(product => {
       commit(ADD_PRODUCT, product)
+      router.push('/')
     })
   },
   deleteProduct ({ commit }, product) {
@@ -65,16 +73,26 @@ const actions = {
     })
   },
   getProducts ({ commit }) {
+    console.log('getProducts: ')
     Product.list().then(products => {
       commit(SET_PRODUCTS, { products })
     })
   },
+  updateProduct ({ commit }, { id, productData, router }) {
+    // При
+    Product.update(id, productData).then(product => {
+      console.log('Update: ', product)
+      router.push('/')
+    })
+  },
   getCategories ({ commit }) {
+    console.log('getCategories: ')
     Category.list().then(categories => {
       commit(SET_CATEGORIES, { categories })
     })
   },
   getProductTypes ({ commit }) {
+    console.log('getProductTypes: ')
     ProductType.list().then(productTypes => {
       commit(SET_PRODUCT_TYPES, { productTypes })
     })

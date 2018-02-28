@@ -34,9 +34,9 @@ class Category(models.Model):
 class Product(models.Model):
     product_type = models.ForeignKey(ProductType)
     category = models.ForeignKey(Category)
-    name = models.CharField(max_length=100, blank=True, null=True, default=None)
+    name = models.CharField(max_length=100, default=None)
     description = models.TextField(blank=True, null=True, default=None)
-    image = models.ImageField(upload_to='products_img')
+    image = models.ImageField(upload_to='products_img', blank=True, null=True)
 
     def __str__(self):
         return '%s' % self.name
