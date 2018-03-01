@@ -1,13 +1,13 @@
 import { HTTP } from './common'
 
 export const ProductType = {
-  // create (config) {
-  //   return HTTP.post('/products/', config).then(response => {
-  //     return response.data
-  //   }).catch(error => {
-  //     console.log(error)
-  //   })
-  // },
+  create (typeData) {
+    return HTTP.post('/product_types/', typeData).then(response => {
+      return response.data
+    }).catch(error => {
+      console.log(error)
+    })
+  },
   // delete (product) {
   //   return HTTP.delete(`/products/${product.id}/`)
   // },

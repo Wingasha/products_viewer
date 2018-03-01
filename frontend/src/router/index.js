@@ -5,6 +5,8 @@ import ProductEdit from '@/components/ProductEdit'
 import ProductList from '@/components/ProductList'
 import SearchResult from '@/components/SearchResult'
 import PageNotFound from '@/components/PageNotFound'
+import CategoryAdd from '@/components/CategoryAdd'
+import TypeAdd from '@/components/TypeAdd'
 
 Vue.use(Router)
 
@@ -38,6 +40,16 @@ export default new Router({
       name: 'ProductSearch',
       component: SearchResult,
       props: true
+    },
+    {
+      path: '/add_category',
+      name: 'CategoryAdd',
+      component: CategoryAdd
+    },
+    {
+      path: '/add_type',
+      name: 'TypeAdd',
+      component: TypeAdd
     },
     {
       path: "*",

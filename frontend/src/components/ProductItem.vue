@@ -1,10 +1,10 @@
 <template>
   <div class="item">
-    <div class="title">
+    <div>
       <strong>
         <h2>{{ product.name }}</h2>
       </strong>
-      </div>
+    </div>
     <div class="img"><img :src="product.image"></div>
     <div class="options">
       <router-link :to="{path: `edit/${product.id}`}" :prop="product">
@@ -70,6 +70,8 @@
     background-color: white;
     justify-items: stretch;
     grid-row-gap: 15px;
+
+    padding: 10px;
   }
 
   .item:hover {
@@ -86,18 +88,8 @@
     margin-right: auto
   }
 
-
   .description {
     text-align: justify;
-    margin: 10px;
-  }
-
-  .title {
-    margin: 10px;
-  }
-
-  .options {
-    margin-left: 10px;
   }
 
   .options button {

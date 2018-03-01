@@ -13,7 +13,9 @@ import {
   ADD_PRODUCT,
   REMOVE_PRODUCT,
   SET_PRODUCTS,
+  ADD_CATEGORY,
   SET_CATEGORIES,
+  ADD_PRODUCT_TYPE,
   SET_PRODUCT_TYPES
 } from './mutation-types.js'
 
@@ -49,9 +51,15 @@ const mutations = {
   [SET_PRODUCTS] (state, { products }) {
     state.products = products.reverse()
   },
+  [ADD_CATEGORY] (state, category) {
+    state.categories = [category, ...state.categories]
+  },
   // Задаем список категорий
   [SET_CATEGORIES] (state, { categories }) {
     state.categories = categories
+  },
+  [ADD_PRODUCT_TYPE] (state, type) {
+    state.productTypes = [type, ...state.productTypes]
   },
   // Задаем список типов
   [SET_PRODUCT_TYPES] (state, { productTypes }) {
@@ -82,9 +90,21 @@ const actions = {
       router.push('/')
     })
   },
+  createCategory ({ commit }, { categoryData, router }) {
+    Category.create(categoryData).then(category => {
+      commit(ADD_CATEGORY, { category })
+      router.push('/')
+    })
+  },
   getCategories ({ commit }) {
     Category.list().then(categories => {
       commit(SET_CATEGORIES, { categories })
+    })
+  },
+  createProductType ({ commit }, { typeData, router }) {
+    ProductType.create(typeData).then(type => {
+      commit(ADD_PRODUCT_TYPE, { type })
+      router.push('/')
     })
   },
   getProductTypes ({ commit }) {

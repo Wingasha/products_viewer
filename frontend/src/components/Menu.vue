@@ -6,6 +6,12 @@
     <li>
       <router-link to="add">Add product</router-link>
     </li>
+    <li>
+      <router-link to="add_category">Add category</router-link>
+    </li>
+    <li>
+      <router-link to="add_type">Add type</router-link>
+    </li>
   </ul>
 </template>
 
