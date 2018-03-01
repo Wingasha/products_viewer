@@ -28,10 +28,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 10px;
-  width: 800px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #edeef0;
   display: grid;
   width: 800px;
   grid-template-rows: auto auto auto;

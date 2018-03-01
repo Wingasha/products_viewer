@@ -12,8 +12,12 @@ export const Category = {
   //   return HTTP.delete(`/products/${product.id}/`)
   // },
   list () {
-    return HTTP.get('/categories/').then(response => {
-      return response.data
-    })
+    return HTTP.get('/categories/')
+      .then(response => {
+        return response.data
+      })
+      .catch(error => {
+        console.log(`Categories GET error: ${error}`)
+      })
   }
 }

@@ -11,17 +11,16 @@
 
 <script>
     export default {
-        name: "menu"
+        name: "custom-menu"
     }
 </script>
 
 <style scoped>
   ul {
     width: 600px;
-    list-style: none; /*убираем маркеры списка*/
-    margin: 0; /*убираем отступы*/
-    padding-left: 0; /*убираем отступы*/
-    margin-top:25px; /*делаем отступ сверху*/
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
     background: #10a0ff;/*добавляем фон всему меню*/
     height: 50px; /*задаем высоту*/
   }

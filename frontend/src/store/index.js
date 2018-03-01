@@ -73,26 +73,21 @@ const actions = {
     })
   },
   getProducts ({ commit }) {
-    console.log('getProducts: ')
     Product.list().then(products => {
       commit(SET_PRODUCTS, { products })
     })
   },
   updateProduct ({ commit }, { id, productData, router }) {
-    // При
     Product.update(id, productData).then(product => {
-      console.log('Update: ', product)
       router.push('/')
     })
   },
   getCategories ({ commit }) {
-    console.log('getCategories: ')
     Category.list().then(categories => {
       commit(SET_CATEGORIES, { categories })
     })
   },
   getProductTypes ({ commit }) {
-    console.log('getProductTypes: ')
     ProductType.list().then(productTypes => {
       commit(SET_PRODUCT_TYPES, { productTypes })
     })

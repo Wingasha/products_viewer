@@ -12,8 +12,12 @@ export const ProductType = {
   //   return HTTP.delete(`/products/${product.id}/`)
   // },
   list () {
-    return HTTP.get('/product_types/').then(response => {
+    return HTTP.get('/product_types/')
+      .then(response => {
       return response.data
-    })
+      })
+      .catch(error => {
+        console.log(`Product_types GET error: ${error}`)
+      })
   }
 }
