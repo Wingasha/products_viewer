@@ -1,6 +1,6 @@
 ## Install dependences for frontend and backend
 
-in /backend run:
+in /backend run (pip >= 9.X):
 ```zsh
 pip install -r requirements.txt
 ```
