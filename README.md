@@ -1,21 +1,33 @@
-#Install requirements for frontend and backend
+## Install dependences for frontend and backend
 
 in /backend run:
+```zsh
 pip install -r requirements.txt
+```
 
 in /frontend run:
-npm install
+```zsh
+➜ npm install
+```
 
-#Init the data base
-
-in /backend run:
-python manage.py makemigrations
-python manage.py migrate
-
-#Run servers
+## Init the data base
 
 in /backend run:
-python manage.py runserver
+```zsh
+➜ python manage.py makemigrations
+➜ python manage.py migrate
+```
+
+## Run servers
+
+in /backend run:
+```zsh
+➜ python manage.py runserver
+```
 
 in /frontend run:
-npm run dev
+```zsh
+➜ npm run dev
+```
+
+# Next go to http://localhost:8080/
