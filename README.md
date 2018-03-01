@@ -30,4 +30,4 @@ in /frontend run:
 ➜ npm run dev
 ```
 
-# Next go to http://localhost:8080/
+#№ Next go to http://localhost:8080/
