@@ -1,5 +1,5 @@
 <template>
-  <form class="formAdd" @submit="submitForm">
+  <form class="block" @submit="submitForm">
     <h3>Add the type</h3>
     <div class="form-group">
       <label for="name">Name</label>
@@ -40,12 +40,5 @@
 </script>
 
 <style scoped>
-.formAdd{
-    border: 2px solid lightgrey;
-    background-color: white;
-    width: 600px;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
 </style>

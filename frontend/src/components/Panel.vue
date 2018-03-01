@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="panel block">
     <label for="name">Name</label>
     <input id="name" class="form-control" placeholder="Product name..." v-model="productName"/>
 
@@ -44,32 +44,18 @@
 
 <style scoped>
   .panel {
-    border: 2px solid lightgrey;
-    background-color: white;
-    width: 600px;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-
     justify-content: center;
     align-items: center;
-  }
-
-  .panel:hover {
-    box-shadow:0 0 13px 0 rgba(0,0,0,.4)
   }
 
   #search {
     grid-column: 2;
     justify-self: end;
   }
-
-
 
 </style>

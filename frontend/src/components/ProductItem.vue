@@ -1,11 +1,11 @@
 <template>
-  <div class="item">
+  <div class="item block">
     <div>
       <strong>
         <h2>{{ product.name }}</h2>
       </strong>
     </div>
-    <div class="img"><img :src="product.image"></div>
+    <div><img class="product-img" :src="product.image"></div>
     <div class="options">
       <router-link :to="{path: `edit/${product.id}`}" :prop="product">
         <button type="button" class="btn btn-success">Edit</button>
@@ -61,31 +61,11 @@
   .item {
     display: grid;
     height: auto;
-    width: 600px;
     grid-template-columns: 100%;
     grid-template-rows: auto minmax(200px, 300px) auto;
-    border: 2px solid lightgrey;
-    margin-top: 10px;
     margin-bottom: 10px;
-    background-color: white;
     justify-items: stretch;
     grid-row-gap: 15px;
-
-    padding: 10px;
-  }
-
-  .item:hover {
-    box-shadow:0 0 13px 0 rgba(0,0,0,.4)
-  }
-
-  img {
-    min-width: 250px;
-    min-height: 150px;
-    max-width: 500px;
-    max-height: 300px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto
   }
 
   .description {
@@ -95,7 +75,5 @@
   .options button {
     min-width: 100px;
   }
-
-
 
 </style>

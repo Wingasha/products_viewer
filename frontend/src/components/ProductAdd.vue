@@ -1,5 +1,5 @@
 <template>
-  <form class="formProduct" @submit="submitForm">
+  <form class="block" @submit="submitForm">
     <h3>Add the product</h3>
     <div class="form-group">
       <label for="name">Name</label>
@@ -18,7 +18,7 @@
       </select>
     </div>
     <div class="form-group">
-      <img :src="image"/>
+      <img class="product-img" :src="image"/>
     </div>
     <div class="form-group">
       <label for="image">Photo</label>
@@ -94,23 +94,5 @@
 </script>
 
 <style scoped>
-  .formProduct{
-    border: 2px solid lightgrey;
-    background-color: white;
-    width: 600px;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-  }
 
-  img {
-    min-width: 250px;
-    min-height: 150px;
-    max-width: 500px;
-    max-height: 300px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-  }
 </style>

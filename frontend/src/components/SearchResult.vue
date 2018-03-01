@@ -48,9 +48,6 @@
 
 <style scoped>
   .list {
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
     list-style-type: none;
     padding: 0;
   }
