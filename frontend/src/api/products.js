@@ -9,10 +9,10 @@ export const Product = {
   create (productData) {
     return HTTP.post('/products/', productData)
       .then(response => {
-      return response.data
+        return response.data
       })
       .catch(error => {
-      console.log(`Product POST error: ${error}`)
+        console.log(`Product POST error: ${error}`)
       })
   },
   delete (product) {
@@ -24,7 +24,7 @@ export const Product = {
   list () {
     return HTTP.get('/products/')
       .then(response => {
-      return response.data
+        return response.data
       })
       .catch(error => {
         console.log(`Product GET error: ${error}`)
@@ -33,10 +33,10 @@ export const Product = {
   update (id, productData) {
     return HTTP.put(`/products/${id}/`, productData)
       .then(response => {
-      return response.data
+        return response.data
       })
       .catch(error => {
-      console.log(`Product PUT error: ${error}`)
+        console.log(`Product PUT error: ${error}`)
       })
   }
 }

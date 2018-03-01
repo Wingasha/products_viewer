@@ -26,14 +26,10 @@
         event.preventDefault()
       },
       createProductType () {
-        // Вызывает действие `createProduct` из хранилища, которое отправит запрос на создание нового продукта к API.
-        // Также приходится передать this.$router, так как требуется, чтобы сервер сохранил запись в БД, прежде, чем
-        // произойдёт перенавравление на главную страницу, которая в свою очередь подгружает записи из БД
         this.$store.dispatch('createProductType',{
           typeData: { name: this.name },
           router: this.$router
         })
-
       }
     }
   }
